@@ -14,14 +14,15 @@ export const randomTemplate = `
         </div>
         <p class='first-random-number'></p>
         <div>
-          <input placeholder="Min" type="number">
+          <input id="min" placeholder="Min" type="number">
         </div>
         <div>
-          <input placeholder="Max" type="number">
+          <input id="max" placeholder="Max" type="number">
         </div>
         <div class="button-position">
-          <button>GENERATE</button>
+          <button id="second-button">GENERATE</button>
         </div>
+        <p class='second-random-number'></p>
       </div>
     </div>
   </div> 

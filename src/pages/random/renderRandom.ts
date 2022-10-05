@@ -1,6 +1,7 @@
-
 import { addRedirectToMainEvent } from "./events/addRedirectToMainPageEvent";
-import { showRandomNumbers } from "./showRandomnumbers";
+import { showRandomNumbers } from "./showRandomNumbers";
+import { showRandomNumByInput } from "./showRandomNumByInput";
+
 import { randomTemplate } from "./template";
 
 export function renderRandom() {
@@ -10,4 +11,5 @@ export function renderRandom() {
 
   addRedirectToMainEvent();
   showRandomNumbers();
+  showRandomNumByInput()
 }

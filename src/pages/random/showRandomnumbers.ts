@@ -9,6 +9,6 @@
   function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
-  let str = `${random(1, 100)}`
+  let str = `${random(1, 1000)}`
   first.innerHTML = str;
 }
