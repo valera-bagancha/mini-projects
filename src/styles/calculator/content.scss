@@ -1,0 +1,54 @@
+.value {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: gray;
+  height: 150px;
+}
+
+.num {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.block {
+  border: 1px solid rgba(0, 0, 0, 0.401);
+  width: 25%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+
+.zero {
+  border: 1px solid rgba(0, 0, 0, 0.401);
+  width: 50%;
+  height: 60px;
+  border-bottom-left-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+
+
+.orange {
+  background-color: orange;
+  border: 1px solid rgba(0, 0, 0, 0.401);
+  width: 25%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+
+.bottom {
+  border-bottom-right-radius: 15px;
+}
