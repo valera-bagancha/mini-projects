@@ -8,7 +8,6 @@ function calc() {
   const secondButton = document.querySelector('.second-random-number');
   const min = document.querySelector('#min') as HTMLInputElement;
   const max = document.querySelector('#max') as HTMLInputElement;
-  // console.log(min.value, max.value);
   function random(min, max) {
     let rand = min - 0.5 + Math.random() * (max - min + 1);
     return Math.round(rand);
