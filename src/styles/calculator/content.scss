@@ -1,8 +1,9 @@
 .screen {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  background-color: gray;
+  background-color: rgb(0, 0, 0);
   height: 150px;
+  position: relative;
 }
 
 .num {
@@ -20,6 +21,9 @@
   font-size: 25px;
   font-family: sans-serif;
   cursor: pointer;
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.179);
+  }
 }
 
 .zero {
@@ -33,6 +37,9 @@
   font-size: 25px;
   font-family: sans-serif;
   cursor: pointer;
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.179);
+  }
 }
 
 
@@ -47,8 +54,27 @@
   font-size: 25px;
   font-family: sans-serif;
   cursor: pointer;
+  &:hover {
+    background-color: rgb(255, 149, 0);
+  }
 }
 
 .bottom {
   border-bottom-right-radius: 15px;
+}
+
+.gray {
+  background-color: rgba(128, 128, 128, 0.268);
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.395);
+  }
+}
+
+.screen-number {
+  position: absolute;
+  top: 94px;
+  right: 20px;
+  color: white;
+  font-size: 50px;
+  font-family: sans-serif;
 }

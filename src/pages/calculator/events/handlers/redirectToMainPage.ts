@@ -1,6 +1,6 @@
 import { render } from "../../../mainpage/render";
 
-export const redirectMainPageHandler = (event: Event) => {
+export const redirectMainPage = (event: Event) => {
   event.preventDefault();
   
   render();

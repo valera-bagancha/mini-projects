@@ -1,5 +1,5 @@
-import { addRedirectToCalcEvent } from "./events/addRedirectToCalcEvent";
-import { addRedirectToRandomEvent } from "./events/addRedirectToRandomEvent";
+import { addRedirectToCalc } from "./events/addRedirectToCalc";
+import { addRedirectToRandom } from "./events/addRedirectToRandom";
 import { mainPageTemplate } from "./template";
 
 export const render = () => {
@@ -7,6 +7,6 @@ export const render = () => {
 
   $app.innerHTML = mainPageTemplate;
 
-  addRedirectToRandomEvent();
-  addRedirectToCalcEvent();
+  addRedirectToRandom();
+  addRedirectToCalc();
 }
