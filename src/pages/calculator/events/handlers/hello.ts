@@ -44,7 +44,26 @@ export function showNum(event:Event) {
     current = [current[0], target.id];
 
     return console.log(current);
-     
+  }
+
+  if (isNumber && lastElem === '=') {
+    current = [target.id];
+
+    num.innerHTML = `${target.id}`;
+
+    return console.log(current);
+  };
+
+  if (!isNaN(+lastElem) && target.id === '%') {
+    current.push('/', '100');
+
+    return console.log(current);
+  };
+
+  if (target.id === '%' && lastElem === '=') {
+    current = [current[0], '/', '100'];
+
+    return console.log(current);
   }
 
   if (isTechOperator && !current.length) return;
