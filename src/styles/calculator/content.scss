@@ -3,7 +3,10 @@
   border-top-right-radius: 15px;
   background-color: rgb(0, 0, 0);
   height: 150px;
-  position: relative;
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+  padding: 0 10px 6px 0;
 }
 
 .num {
@@ -71,9 +74,9 @@
 }
 
 .screen-number {
-  position: absolute;
-  top: 94px;
-  right: 20px;
+  // position: absolute;
+  // top: 94px;
+  // right: 20px;
   color: white;
   font-size: 50px;
   font-family: sans-serif;

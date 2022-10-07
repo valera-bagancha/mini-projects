@@ -27,7 +27,7 @@ export const calculatorTemplate = `
         <div id="3" class="block">3</div>
         <div id="+" class="orange">+</div>
         <div id="0" class="zero">0</div>
-        <div id="," class="block">,</div>
+        <div id="." class="block">,</div>
         <div id="=" class="orange bottom">=</div>
       </div>
     </div>
