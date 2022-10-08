@@ -68,7 +68,11 @@ export function showNum(event:Event) {
     return console.log(current);
   };
 
-  
+  if ((lastElem === '-' || '+' || '/' || 'x') && isOperator) {
+    current = [current[0], target.id];
+
+    return console.log(current);
+  }
 
   if (isTechOperator && !current.length) return;
     
