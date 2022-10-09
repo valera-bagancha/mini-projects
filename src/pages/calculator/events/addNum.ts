@@ -1,4 +1,4 @@
-import { showNum } from "./handlers/hello";
+import { showNum } from "./handlers/logicCalc";
 
 
 

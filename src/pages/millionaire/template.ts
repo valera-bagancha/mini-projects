@@ -1,16 +1,18 @@
-export const millionaire = `
+export const millionaireTemplate = `
  <div class="bg">
       <div class="back">
-        <span class="white">
+        <span id="back-to-main-page" class="white material-symbols-outlined">
           arrow_back
           </span>
       </div>
       <div class="main">
         <div class="helps">
-          <div class="help">50/50</div>
-          <div class="help"><span class="material-symbols-outlined">
-            call
-            </span></div>
+          <div class="clues">
+            <div class="help">50/50</div>
+            <div class="help"><span class="material-symbols-outlined">
+              call
+              </span></div>
+          </div>  
         </div>
         <div class="logo">
           <img src="https://static.1tv.ru/uploads/project/logo_image/2017/08/23/322/_original/322_c144e2880b.png" alt="">
@@ -45,5 +47,4 @@ export const millionaire = `
         </div>
       </div>
     </div> 
-
-    `;
+`;
