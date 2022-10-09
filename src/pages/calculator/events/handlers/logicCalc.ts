@@ -16,16 +16,32 @@ export function showNum(event:Event) {
   const lastElem = current[current.length - 1];
   const isFull = current.length === 3
 
+
+  if (isFull && target.id === '%') {
+    const result = calc(+current[0], +current[2], current[1]);
+
+    num.innerHTML = `${result}`;
+
+    current = [result, '/', '100'];
+
+    return console.log(current);
+  };
+
+  if ((lastElem === '-' || '+' || '/' || 'x') && target.id === '%') {
+    current = [current[0], '/', '100'];
+
+    return console.log(current);
+  };
+
   if (isFull && isOperator) {
     const result = calc(+current[0], +current[2], current[1]);
 
     num.innerHTML = `${result}`;
 
-    current = [result];
+    current = [result, target.id];
 
-    return
+    return console.log(current);
   };
-
 
   if (isFull && target.id === '=') {
     const result = calc(+current[0], +current[2], current[1]);
@@ -68,6 +84,12 @@ export function showNum(event:Event) {
     return console.log(current);
   };
 
+  if (isOperator && !current.length) {
+    current.push('0', target.id);
+
+    return console.log(current);
+  };
+
   if ((lastElem === '-' || '+' || '/' || 'x') && isOperator) {
     current = [current[0], target.id];
 
@@ -83,12 +105,6 @@ export function showNum(event:Event) {
 
     return console.log(current);
   }
-
-  if (isOperator && !current.length) {
-    current.push('0', target.id);
-
-    return console.log(current);
-  };
 
   if (isNumber && !current.length) {
     current.push(target.id);
