@@ -141,7 +141,7 @@ export function showNum(event:Event) {
     current.push(target.id);
 
     return console.log(current);
-  }
+  };
 
   if (isNumber && isNaN(+lastElem)) {
     current.push(target.id);
@@ -149,6 +149,6 @@ export function showNum(event:Event) {
     num.innerHTML = `${target.id}`;
 
     return console.log(current);
-  }
+  };
 }
 

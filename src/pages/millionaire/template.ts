@@ -19,31 +19,14 @@ export const millionaireTemplate = `
         </div>
         <div class="awards">
           <div class="numbers">
-            <div class="big">1 000 000</div>
-            <div>500 000</div>
-            <div>250 000</div>
-            <div>124 000</div>
-            <div>64 000</div>
-            <div class="big">32 000</div>
-            <div>16 000</div>
-            <div>8 000</div>
-            <div>4 000</div>
-            <div>2 000</div>
-            <div class="big">1 000</div>
-            <div>500</div>
-            <div>300</div>
-            <div>200</div>
-            <div>100</div>
+            
           </div>
         </div>
       </div>
       <div class="submain">
-        <div class="question">как дела?</div>
-        <div class="answer">
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
+        <div class="question"></div>
+        <div class="answer-parent">
+         
         </div>
       </div>
     </div> 
