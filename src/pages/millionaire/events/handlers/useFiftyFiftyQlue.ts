@@ -1,23 +1,24 @@
 import { getRandomNumber } from "../../../../helpers/getRandomNumber"
+import { shuffle } from "../../../../helpers/shuffle";
 import { levels } from "../../constants/levels";
+import { getLevelIndex } from "../../state/levelServies";
 
+let usedQlue = false;
 
+export const useFiftyFiftyQlue = () => {
 
-export const useFiftyFiftyQlue = (levelIndex: number) => {
-  const firstNum = getRandomNumber(0, 3);
-  const secondNum = getRandomNumber(0, 3);
+if (usedQlue) return;
+  const levelIndex = getLevelIndex();
   const answers = levels[levelIndex].answers;
-
-  console.log(firstNum);
-  console.log(secondNum);
-
-}
-
-
-function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1)); 
-
-    [array[i], array[j]] = [array[j], array[i]];
-  }
+  const correctAnswerIndex = answers.findIndex(({isCorrect}) => isCorrect);
+  const filteredAnswers = answers.filter((item, index) => index !== correctAnswerIndex);
+  shuffle(filteredAnswers);
+  const removeElem1 = filteredAnswers[0];
+  const removeElem2 = filteredAnswers[1];
+  const $answer1  = document.getElementById(removeElem1.id);
+  const $answer2  = document.getElementById(removeElem2.id);
+  $answer1.remove();
+  $answer2.remove();
+     
+  usedQlue = true
 }
