@@ -1,9 +1,8 @@
-import { showNum } from "./handlers/logicCalc";
-
-
+import { eventHandler } from "./handlers/logicCalc";
 
 export const addNum = () => {
-  const $href = document.querySelector('.num');
-
-  $href.addEventListener('click', showNum);
-};
+  
+  const parent = document.querySelector('.num');
+  
+  parent.addEventListener('click', eventHandler);
+}

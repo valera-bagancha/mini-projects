@@ -1,0 +1,1 @@
+export const replacePointToComma = (str) => str.replaceAll('.', ',');

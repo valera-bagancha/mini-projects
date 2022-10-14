@@ -8,8 +8,8 @@ export const millionaireTemplate = `
       <div class="main">
         <div class="helps">
           <div class="clues">
-            <div id="fifty-fifty"class="help">50/50</div>
-            <div class="help"><span class="material-symbols-outlined">
+            <div id="fifty-fifty" class="help">50/50</div>
+            <div id="call" class="help"><span class="material-symbols-outlined">
               call
               </span></div>
           </div>  

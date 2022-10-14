@@ -1,1 +1,1 @@
-export const technicalOperators = ['AC', '%', '='];
+//export const technicalOperators = ['AC', '%', '='];

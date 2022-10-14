@@ -11,3 +11,4 @@ export const resetLevelIndex = () => {
 }
 
 export const getLevelIndex = () => levelIndex
+

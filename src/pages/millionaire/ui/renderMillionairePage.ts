@@ -1,4 +1,5 @@
 import { levels } from "../constants/levels";
+import { addCallQlue } from "../events/addCallqlue";
 import { addFiftyFifty } from "../events/addFiftyFifty";
 import { addRedirectToMain } from "../events/addRedirectToMainPage";
 import { nextQuestion } from "../events/nextQuestion";
@@ -17,4 +18,5 @@ export const render = () => {
   renderPrices();
   nextQuestion();
   addFiftyFifty();
+  addCallQlue();
 }

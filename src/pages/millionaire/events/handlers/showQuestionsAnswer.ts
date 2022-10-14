@@ -1,12 +1,12 @@
 import { levels } from "../../constants/levels";
 import { getLevelIndex, incrementLevelIndex, resetLevelIndex } from "../../state/levelServies";
+import { resetBothUseQlue } from "../../state/qlueServies";
 import { renderLevel } from "../../ui/renderLevel";
+import { renderPrices } from "../../ui/renderPrices";
+import { generatePriceNodes } from "../../ui/renderPrices/generatePriceNodes";
 import { redirectToMainPage } from "./redirectToMainPage";
 
-
-
-
-export function showQuestionsAnswer(event: Event) {
+export const showQuestionsAnswer = (event: Event) => {
   const target = event.target as HTMLElement
   
   const id = target.id;
@@ -18,12 +18,7 @@ export function showQuestionsAnswer(event: Event) {
   const currentLevels = levels.slice(0, levelIndex + 1);
 
   const level = currentLevels.reverse().find(item => item.price.isStable);
-
-  
-console.log(answer);
-console.log(levelIndex);
-
-
+ 
   if (answer.isCorrect) {
     if (levelIndex === 14) {
       alert(`You win. ${level ? level.price.value : 0}.`);
@@ -32,16 +27,23 @@ console.log(levelIndex);
     }
     const updatedLevelIndex = incrementLevelIndex()
 
-    return renderLevel(levels[updatedLevelIndex]);
+    renderLevel(levels[updatedLevelIndex]);
+    return renderPrices();
   } 
     const text =  `You are lost. Your win ${level ? level.price.value : 0}` 
     const isRestart = confirm(`${text} Do you want to restart ?`);
 
+    const updateLevelIndex = resetLevelIndex();
+    resetBothUseQlue();
+    renderLevel(levels[updateLevelIndex])
+
     if (isRestart) {
-      const updateLevelIndex = resetLevelIndex()
+      const updateLevelIndex = resetLevelIndex();
 
       return renderLevel(levels[updateLevelIndex]);
-    } 
+    }
+
+      
       return redirectToMainPage(event);
 } 
 

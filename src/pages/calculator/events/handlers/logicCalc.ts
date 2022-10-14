@@ -1,154 +1,148 @@
-import { calc } from "../../../../helpers/calc";
-import { comma } from "../../constants/comma";
 import { numbers } from "../../constants/numbers";
 import { operators } from "../../constants/operators";
-import { technicalOperators } from "../../constants/technicalOperators";
-
-let current = [];
-
-export function showNum(event:Event) {
-  const target = event.target as HTMLElement
-  const num = document.querySelector('.screen-number')
-
-  const isOperator = operators.includes(target.id);
-  const isNumber = numbers.includes(target.id);
-  const isTechOperator = technicalOperators.includes(target.id);
-  const lastElem = current[current.length - 1];
-  const isFull = current.length === 3
+import { resolveComma } from "./resolveComma";
+import { resolveEqual } from "./resolveEqual";
+import { resolveMinus } from "./resolveMinus";
+import { resolveNumbers } from "./resolveNumbers";
+import { resolveOperator } from "./resolveOperator";
+import { resolvePerсent } from "./resolvePerсent";
 
 
-  if (isFull && target.id === '%') {
-    const result = calc(+current[0], +current[2], current[1]);
+const screenNumber = document.querySelector('.screen-number');
 
-    num.innerHTML = `${result}`;
+console.log(screenNumber);
 
-    current = [result, '/', '100'];
 
-    return console.log(current);
-  };
+let mathStr = '0';
+let showStr = '0';
+let isPrevEqual = false;
 
-  if ((lastElem === '-' || '+' || '/' || 'x') && target.id === '%') {
-    current = [current[0], '/', '100'];
+export const eventHandler = (e) => {
+  const screenNumber = document.querySelector('.screen-number');
 
-    return console.log(current);
-  };
+console.log(screenNumber);
+  const id = e.target.id;
 
-  if (isFull && isOperator) {
-    const result = calc(+current[0], +current[2], current[1]);
+  const isOperator = operators.includes(id);
+  const isNumber = numbers.includes(id);
 
-    num.innerHTML = `${result}`;
+  const isLastCharOperator = operators.includes(mathStr[mathStr.length - 1]);
+  const mathStrIncludeOperator = operators.some((operator) => mathStr.substring(1).includes(operator));
 
-    current = [result, target.id];
+  if (isNumber) {
+    const options = {
+      id,
+      mathStr,
+      showStr,
+      isLastCharOperator,
+      isPrevEqual
+    };
 
-    return console.log(current);
-  };
+    const [newMathStr, newShowStr, newIsPrevEqual] = resolveNumbers(options);
 
-  if (isFull && target.id === '=') {
-    const result = calc(+current[0], +current[2], current[1]);
+    mathStr = newMathStr;
+    showStr = newShowStr;
 
-    num.innerHTML = `${result}`;
+    screenNumber.innerHTML = newShowStr;
 
-    current = [result, '='];
-    return console.log(current);
-  };
-
-  if (target.id === 'AC') {
-    current = [];
-
-    num.innerHTML = '0';
-  };
-
-  if (isOperator && lastElem === '=') {
-    current = [current[0], target.id];
-
-    return console.log(current);
-  };
-
-  if (isNumber && lastElem === '=') {
-    current = [target.id];
-
-    num.innerHTML = `${target.id}`;
-
-    return console.log(current);
-  };
-
-  if (!isNaN(+lastElem) && target.id === '%') {
-    current.push('/', '100');
-
-    return console.log(current);
-  };
-
-  if (target.id === '%' && lastElem === '=') {
-    current = [current[0], '/', '100'];
-
-    return console.log(current);
-  };
-
-  if (isOperator && !current.length) {
-    current.push('0', target.id);
-
-    return console.log(current);
-  };
-
-  if ((lastElem === '-' || '+' || '/' || 'x') && isOperator) {
-    current = [current[0], target.id];
-
-    return console.log(current);
+    isPrevEqual = newIsPrevEqual;
   }
 
-  if (isTechOperator && !current.length) return;
-    
-  if (comma.includes(target.id) && !current.length) {
-    current.push('0' + target.id);
+  if (isOperator) {
+    const options = {
+      id,
+      mathStr,
+      showStr,
+      isLastCharOperator,
+      mathStrIncludeOperator
+    };
 
-    num.innerHTML = `${current}`;
+    const [newMathStr, newShowStr] = resolveOperator(options);
 
-    return console.log(current);
+    mathStr = newMathStr;
+    showStr = newShowStr;
+
+    screenNumber.innerHTML = newShowStr;
   }
 
-  if (isNumber && !current.length) {
-    current.push(target.id);
+  switch (id) {
+    case '=': {
+      const options = {
+        mathStr,
+        showStr,
+        isLastCharOperator
+      };
 
-    num.innerHTML = `${target.id}`;
+      const [newMathStr, newShowStr] = resolveEqual(options);
 
-    return console.log(current);
-  };  
+      mathStr = newMathStr;
+      showStr = newShowStr;
 
-  if (lastElem[lastElem.length - 1] === '.' && comma.includes(target.id)) {
-    current[current.length - 1];
+      screenNumber.innerHTML = newShowStr;
+  
+      isPrevEqual = true;
+      break;
+    }
+  
+    case '-': {
+      const options = {
+        id,
+        mathStr,
+        showStr
+      };
 
-    return console.log(current);
+      const [newMathStr, newShowStr] = resolveMinus(options);
+
+      mathStr = newMathStr;
+      showStr = newShowStr;
+
+      screenNumber.innerHTML = newShowStr;
+      break;
+    }
+
+    case ',': {
+      const options = {
+        id,
+        mathStr,
+        showStr,
+        mathStrIncludeOperator
+      };
+
+      const [newMathStr, newShowStr] = resolveComma(options);
+
+      mathStr = newMathStr;
+      showStr = newShowStr;
+
+      screenNumber.innerHTML = newShowStr;
+      break;
+    }
+
+    case 'AC': {
+      mathStr = '0';
+      showStr = '0';
+
+      screenNumber.innerHTML = showStr;
+      break;
+    }
+
+    case '%': {
+      const options = {
+        mathStr,
+        showStr,
+      };
+  
+
+      const [newMathStr, newShowStr] = resolvePerсent(options);
+
+      mathStr = newMathStr;
+      showStr = newShowStr;
+
+      screenNumber.innerHTML = newShowStr;
+      break;
+    }
+
   }
-
-  if (lastElem.includes('.') && comma.includes(target.id)) {
-    current[current.length - 1]
-
-    return console.log(current);
-  }
-
-  if ((isNumber || comma.includes(target.id)) && (lastElem[lastElem.length - 1] === '.' || !isNaN(+lastElem))) {
-    const sum = lastElem + target.id
-
-    current[current.length - 1] = sum;
-
-    num.innerHTML = sum;
-
-    return console.log(current);
-  };
+};
 
 
-  if (isOperator && current.length === 1) {
-    current.push(target.id);
-
-    return console.log(current);
-  };
-
-  if (isNumber && isNaN(+lastElem)) {
-    current.push(target.id);
-
-    num.innerHTML = `${target.id}`;
-
-    return console.log(current);
-  };
-}
 

@@ -9,16 +9,18 @@ export const randomTemplate = `
     <div class="container-random">
       <div class="title">True Random Number Generator</div>
       <div class="inputs">
-        <div class="button-position">
-          <button id="first-button" >Generate Random number</button>
-        </div>
-        <p class='first-random-number'></p>
         <div>
           <input id="min" placeholder="Min" type="number">
         </div>
+
         <div>
           <input id="max" placeholder="Max" type="number">
         </div>
+      
+        <div>
+          <input id="get-num" placeholder="How many numbers" type="number">
+        </div>
+
         <div class="button-position">
           <button id="second-button">GENERATE</button>
         </div>
